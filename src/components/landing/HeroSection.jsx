@@ -57,7 +57,7 @@ import { Link } from 'react-router-dom';
 // https://cdn.dribbble.com/userupload/17778216/file/original-ea8be7b1c17c7b04ce83d5725e89a282.mp4
 const HeroSection = () => {
 
-  const velocity = 100;
+
   return (
     <section className="relative bg-gradient-to-l from-[#06000c] via-[#10001f] to-[#06000c] min-h-screen w-full  flex flex-col justify-center items-center overflow-hidden pt-2 pb-12">
 
@@ -74,7 +74,7 @@ const HeroSection = () => {
       {/* Content Container */}
 
 
-      <div className="max-w-5xl w-full text-center mt-36 lg:mt-52">
+      <div className="max-w-5xl w-full text-center mt-12 lg:mt-52">
         <div className="inline-flex items-center  rounded-full px-4 py-2 mb-6 text-xs sm:text-sm font-semibold space-x-2 select-none mx-auto max-w-max border ">
           <span className="text-white text-[10px] sm:text-xs leading-none">•</span>
           <span className="text-white">বাংলায় শিখব, সারা বিশ্বে নাম করব</span>

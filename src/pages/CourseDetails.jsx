@@ -143,17 +143,84 @@
 //   );
 // }
 
+// import { useParams, useNavigate } from "react-router-dom";
+// import { useSelector } from "react-redux";
+
+// export default function CourseDetails() {
+//   const { id } = useParams();
+//   const navigate = useNavigate();
+//   const courses = useSelector((state) => state.course.courses);
+//   const course = courses.find((c) => c.id.toString() === id);
+
+//   if (!course) {
+//     return <div className="text-center text-gray-500 py-20">Course not found {id}.</div>;
+//   }
+
+//   const {
+//     image,
+//     title,
+//     category,
+//     instructor,
+//     lessons,
+//     reviews,
+//     rating,
+//     price,
+//     students,
+//     certification,
+//     duration,
+//     language,
+//   } = course;
+
+//   return (
+//     <div className="py-12">
+//       <div className="max-w-4xl mx-auto px-4">
+       
+
+//         {/* Back Button */}
+//         <button
+//           onClick={() => navigate(-1)}
+//           className="mb-6 text-sm text-violet-600 hover:underline flex items-center"
+//         >
+//           ← Back
+//         </button>
+
+//         <img src={image} alt={title} className="w-full h-64 object-cover rounded-xl" />
+//         <h2 className="text-3xl font-bold mt-6">{title}</h2>
+//         <p className="text-gray-600 mt-2">{category} • Instructor: {instructor}</p>
+//         <p className="text-sm text-gray-500 mt-1">
+//           {lessons} Lessons • {students} Students • {language}
+//         </p>
+//         <p className="text-yellow-500 mt-2">⭐ {rating} ({reviews} Reviews)</p>
+//         <p className="text-lg text-violet-600 font-bold mt-4">{price}</p>
+//         <p className="text-sm mt-2">Certification: {certification} • Duration: {duration}</p>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+
 import { useParams, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../redux/cart/cartSlice"; // Adjust path if needed
 
 export default function CourseDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const courses = useSelector((state) => state.course.courses);
+  const cartItems = useSelector((state) => state.cart.items);
   const course = courses.find((c) => c.id.toString() === id);
 
   if (!course) {
-    return <div className="text-center text-gray-500 py-20">Course not found {id}.</div>;
+    return (
+      <div className="text-center text-gray-500 py-20">
+        Course not found with ID: {id}.
+      </div>
+    );
   }
 
   const {
@@ -171,11 +238,17 @@ export default function CourseDetails() {
     language,
   } = course;
 
+  const handleAddToCart = () => {
+    const alreadyInCart = cartItems.some((item) => item.id === course.id);
+    if (!alreadyInCart) {
+      dispatch(addToCart({ ...course, quantity: 1 }));
+    }
+    navigate("/cart");
+  };
+
   return (
     <div className="py-12">
       <div className="max-w-4xl mx-auto px-4">
-       
-
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
@@ -184,17 +257,37 @@ export default function CourseDetails() {
           ← Back
         </button>
 
-        <img src={image} alt={title} className="w-full h-64 object-cover rounded-xl" />
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-64 object-cover rounded-xl"
+        />
         <h2 className="text-3xl font-bold mt-6">{title}</h2>
-        <p className="text-gray-600 mt-2">{category} • Instructor: {instructor}</p>
-        <p className="text-sm text-gray-500 mt-1">
-          {lessons} Lessons • {students} Students • {language}
+        <p className="text-gray-600 mt-2">
+          {category} • Instructor: {instructor}
         </p>
-        <p className="text-yellow-500 mt-2">⭐ {rating} ({reviews} Reviews)</p>
+        <p className="text-sm text-gray-500 mt-1">
+          {lessons} Lessons • {students} Students • {language || "English"}
+        </p>
+        <p className="text-yellow-500 mt-2">
+          ⭐ {rating} ({reviews} Reviews)
+        </p>
         <p className="text-lg text-violet-600 font-bold mt-4">{price}</p>
-        <p className="text-sm mt-2">Certification: {certification} • Duration: {duration}</p>
+        <p className="text-sm mt-2">
+          Certification: {certification || "Yes"} • Duration:{" "}
+          {duration || "Self-paced"}
+        </p>
+
+        {/* Action Button */}
+        <div className="mt-6">
+          <button
+            onClick={handleAddToCart}
+            className="px-5 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500 text-sm font-medium"
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );
 }
-

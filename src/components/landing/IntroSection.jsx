@@ -47,7 +47,7 @@ export default function IntroSection() {
             </li>
           </ul>
 
-          <a href="#" class="group inline-flex items-center pl-6 pr-2 py-2 bg-[#5C4DFF] text-white text-base font-medium rounded-full hover:bg-[#4b3ccc] transition">
+          <a href="/courses" class="group inline-flex items-center pl-6 pr-2 py-2 bg-[#5C4DFF] text-white text-base font-medium rounded-full hover:bg-[#4b3ccc] transition">
             Find Courses
             <span class="ml-3 bg-white text-[#5C4DFF] rounded-full w-8 h-8 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
               →

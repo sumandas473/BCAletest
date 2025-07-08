@@ -5,8 +5,8 @@ import About from './pages/About';
 import Courses from './pages/Courses';
 import CourseDetails from './pages/CourseDetails';
 // import FAQ from './pages/FAQ';
-// import Contact from './pages/Contact';
-// import Cart from './pages/Cart';
+import Contact from './pages/Contact';
+import Cart from './pages/Cart';
 // import Checkout from './pages/Checkout';
 // import Register from './pages/Register';
 // import Login from './pages/Login';
@@ -21,10 +21,12 @@ export default function App() {
           <Route path="about" element={<About />} />
           <Route path="courses" element={<Courses />} />
           <Route path="courses/:id" element={<CourseDetails />} /> {/* ✅ FIXED */}
+          <Route path="cart" element={<Cart />} />
+          <Route path="contact" element={<Contact />} />
           {/* 
           <Route path="faq" element={<FAQ />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="cart" element={<Cart />} />
+          
+          
           <Route path="checkout" element={<Checkout />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />

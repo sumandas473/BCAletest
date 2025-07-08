@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import bcalogo from "../assets/BCA-logo.png"; // Adjust the path to your logo image
+import bcalogo from "../assets/BCA-logo.png";
+import { useSelector } from "react-redux"; 
 import {
   FaFacebookF,
   FaTwitter,
@@ -12,6 +13,9 @@ import { IoMenu, IoClose } from "react-icons/io5";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    const cartItems = useSelector((state) => state.cart.items);
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
  
 
   return (
@@ -75,7 +79,7 @@ export default function Navbar() {
           <nav className="flex gap-6">
             <Link to="/" className="hover:text-purple-600">Home</Link>
             <Link to="/courses" className="hover:text-purple-600">Courses</Link>
-            <Link to="/pages" className="hover:text-purple-600">Pages</Link>
+            {/* <Link to="/pages" className="hover:text-purple-600">Pages</Link> */}
            
             <Link to="/about" className="hover:text-purple-600">About Us</Link>
             <Link to="/contact" className="hover:text-purple-600">Contact Us</Link>
@@ -88,10 +92,14 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-5">
-            <Link to="/cart" className="relative">
-              <FaShoppingBag className="text-lg" />
-              <span className="absolute -top-2 -right-2 bg-purple-600 text-white text-xs rounded-full px-1.5 py-0.5">0</span>
-            </Link>
+             <Link to="/cart" className="relative">
+        <FaShoppingBag className="text-lg" />
+        {totalItems > 0 && (
+          <span className="absolute -top-2 -right-2 bg-purple-600 text-white text-xs rounded-full px-1.5 py-0.5">
+            {totalItems}
+          </span>
+        )}
+      </Link>
           </div>
         </div>
 
@@ -102,15 +110,19 @@ export default function Navbar() {
     <nav className="flex flex-col gap-4 px-2">
       <Link to="/" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">Home</Link>
       <Link to="/courses" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">Courses</Link>
-      <Link to="/pages" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">Pages</Link>
-      <Link to="/news" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">News</Link>
+      {/* <Link to="/pages" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">Pages</Link> */}
+      {/* <Link to="/news" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">News</Link> */}
       <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">About Us</Link>
       <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">Contact Us</Link>
       <Link to="/register" onClick={() => setMobileMenuOpen(false)} className="text-yellow-600 font-medium">Register</Link>
       <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="text-purple-600 font-medium">Log In</Link>
       <Link to="/cart" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2">
         <FaShoppingBag />
-        Cart (0)
+        Cart {totalItems > 0 && (
+          <span className=" bg-purple-600 text-white text-xs rounded-full px-1.5 py-0.5">
+            {totalItems}
+          </span>
+        )}
       </Link>
     </nav>
   </div>

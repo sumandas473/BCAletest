@@ -80,29 +80,31 @@ export default function About() {
       </section> */}
 
       {/* Collaboration */}
-      <section className="">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <iframe
-  className="rounded-xl mx-auto mb-6 md:w-1/2 shadow-lg"
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/giWywEPWTus?autoplay=1&mute=1&controls=1&loop=1&playlist=giWywEPWTus"
-  title="YouTube video player"
-  frameBorder="0"
-  allow="autoplay; encrypted-media; picture-in-picture"
-  allowFullScreen
-></iframe>
+      <section className="px-4 py-8">
+  <div className="max-w-7xl mx-auto text-center">
+    <div className="relative w-full pb-[56.25%] mb-6 rounded-xl overflow-hidden shadow-lg">
+      <iframe
+        className="absolute top-0 left-0 w-full h-full"
+        src="https://www.youtube.com/embed/giWywEPWTus?autoplay=1&mute=1&controls=1&loop=1&playlist=giWywEPWTus"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+    </div>
 
-          <p className="text-gray-600">
-            Get in touch for <strong>More</strong> information about our courses and how we can help you achieve your learning goals.
-          </p>
-          <div className="flex justify-center flex-wrap gap-6 mt-6 text-gray-500 text-sm">
-            {["Education", "Online", "Digital", "Smart", "Creative"].map((brand) => (
-              <div key={brand}>{brand}</div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <p className="text-gray-600 text-base md:text-lg max-w-xl mx-auto">
+      Get in touch for <strong>More</strong> information about our courses and how we can help you achieve your learning goals.
+    </p>
+
+    <div className="flex justify-center flex-wrap gap-4 mt-6 text-gray-500 text-sm">
+      {["Education", "Online", "Digital", "Smart", "Creative"].map((brand) => (
+        <div key={brand} className="px-3 py-1 border rounded-full">{brand}</div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* CTA Section */}
       <section className="bg-[#5427d0] text-white py-20">
