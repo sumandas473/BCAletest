@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#f9f9f9] text-gray-700 mt-16">
+    <footer className="bg-[#f9f9f9] text-gray-700 ">
       <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo & Social */}
         <div>
@@ -46,7 +46,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center text-sm text-gray-500 py-4 border-t">
-        © {new Date().getFullYear()} Eduna. All Rights Reserved.
+        © {new Date().getFullYear()} Bengal Coding Academy. All Rights Reserved.
       </div>
     </footer>
   );

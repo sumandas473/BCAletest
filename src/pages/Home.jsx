@@ -15,11 +15,12 @@ import ContactSection from "../components/landing/ContactSection";
 export default function Home() {
   return (
     <div>
+      
       <HeroSection />
       <IntroSection />
       <CategoryGrid />
       <FeatureHighlights />
-      <CourseList />
+      <CourseList  />
       <TestimonialSection />
       <ContactSection />
       {/* <PromotionBanner />

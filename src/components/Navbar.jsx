@@ -12,6 +12,7 @@ import { IoMenu, IoClose } from "react-icons/io5";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+ 
 
   return (
     <header className="shadow-sm bg-gradient-to-r from-[#fdf7e9] to-[#eef3fb] fixed top-0 left-0 w-full z-50">
@@ -75,7 +76,7 @@ export default function Navbar() {
             <Link to="/" className="hover:text-purple-600">Home</Link>
             <Link to="/courses" className="hover:text-purple-600">Courses</Link>
             <Link to="/pages" className="hover:text-purple-600">Pages</Link>
-            <Link to="/news" className="hover:text-purple-600">News</Link>
+           
             <Link to="/about" className="hover:text-purple-600">About Us</Link>
             <Link to="/contact" className="hover:text-purple-600">Contact Us</Link>
           </nav>
@@ -95,24 +96,26 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 py-4 text-sm text-gray-700">
-            <nav className="flex flex-col gap-4 px-2">
-              <Link to="/" className="hover:text-purple-600">Home</Link>
-              <Link to="/courses" className="hover:text-purple-600">Courses</Link>
-              <Link to="/pages" className="hover:text-purple-600">Pages</Link>
-              <Link to="/news" className="hover:text-purple-600">News</Link>
-              <Link to="/about" className="hover:text-purple-600">About Us</Link>
-              <Link to="/contact" className="hover:text-purple-600">Contact Us</Link>
-              <Link to="/register" className="text-yellow-600 font-medium">Register</Link>
-              <Link to="/login" className="text-purple-600 font-medium">Log In</Link>
-              <Link to="/cart" className="flex items-center gap-2">
-                <FaShoppingBag />
-                Cart (0)
-              </Link>
-            </nav>
-          </div>
-        )}
+        {/* Mobile Menu */}
+{mobileMenuOpen && (
+  <div className="md:hidden transition-all duration-700 ease-in-out border-t border-gray-200 py-4 text-sm text-gray-700">
+    <nav className="flex flex-col gap-4 px-2">
+      <Link to="/" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">Home</Link>
+      <Link to="/courses" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">Courses</Link>
+      <Link to="/pages" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">Pages</Link>
+      <Link to="/news" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">News</Link>
+      <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">About Us</Link>
+      <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-purple-600">Contact Us</Link>
+      <Link to="/register" onClick={() => setMobileMenuOpen(false)} className="text-yellow-600 font-medium">Register</Link>
+      <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="text-purple-600 font-medium">Log In</Link>
+      <Link to="/cart" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2">
+        <FaShoppingBag />
+        Cart (0)
+      </Link>
+    </nav>
+  </div>
+)}
+
       </div>
     </header>
   );

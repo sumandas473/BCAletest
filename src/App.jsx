@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-// import About from './pages/About';
-// import Courses from './pages/Courses';
-// import CourseDetails from './pages/CourseDetails';
+import About from './pages/About';
+import Courses from './pages/Courses';
+import CourseDetails from './pages/CourseDetails';
 // import FAQ from './pages/FAQ';
 // import Contact from './pages/Contact';
 // import Cart from './pages/Cart';
@@ -18,16 +18,18 @@ export default function App() {
       <Layout>
         <Routes>
           <Route index element={<Home />} />
-          {/* <Route path="about" element={<About />} />
+          <Route path="about" element={<About />} />
           <Route path="courses" element={<Courses />} />
-          <Route path="courses/:slug" element={<CourseDetails />} />
+          <Route path="courses/:id" element={<CourseDetails />} /> {/* ✅ FIXED */}
+          {/* 
           <Route path="faq" element={<FAQ />} />
           <Route path="contact" element={<Contact />} />
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
-          <Route path="*" element={<NotFound />} /> */}
+          <Route path="*" element={<NotFound />} /> 
+          */}
         </Routes>
       </Layout>
     </BrowserRouter>
